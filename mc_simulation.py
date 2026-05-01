@@ -117,14 +117,16 @@ plot_df = pd.DataFrame(records)
 # Calculate percentage of finishes for each position
 counts = plot_df.apply(pd.Series.value_counts).fillna(0)
 
-percentages = counts.div(len(plot_df)) * 100
-percentages.index = percentages.index.astype(int)
+mc_percentages = counts.div(len(plot_df)) * 100
+mc_percentages.index = mc_percentages.index.astype(int)
 
 # Plot the heatmap
-plt.figure(figsize=(12, 6))
-ax = sns.heatmap(
-    percentages.transpose(), annot=True, fmt=".1f", cmap="Reds", linewidths=1
-)
-ax.xaxis.tick_top()
-plt.tight_layout()
-plt.show()
+if __name__ == "__main__":
+    plt.figure(figsize=(12, 6))
+    ax = sns.heatmap(
+        mc_percentages.transpose(), annot=True, fmt=".1f", cmap="Reds", linewidths=1
+    )
+    ax.xaxis.tick_top()
+    plt.tight_layout()
+    plt.title("Monte Carlo prediction of final position (n=1000)")
+    plt.show()
