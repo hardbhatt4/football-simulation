@@ -12,4 +12,5 @@ and a Monte Carlo approach. Outputs a heatmap of finish probabilities.
 ## Usage
 
 pip install -r requirements.txt
-python main.py
+
+python mc_simulation.py
